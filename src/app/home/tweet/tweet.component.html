@@ -1,0 +1,46 @@
+<div class="container">
+  <div class="card">
+    <div class="card-body">
+      <h4 class="card-title text-center"><strong>Welcome to Twitter</strong></h4>
+
+      <div class="container">
+        <p class="card-text text-center">This is the best place to see what’s happening in your world. Find some people
+          and topics to follow now.</p>
+
+      </div>
+    </div>
+  </div>
+  <div class="card card-highlight" *ngFor="let tweet of tweets;let i=index" (click)="goToTweetDetails(tweets[i])"
+    data-toggle="modal" data-target="#exampleModalCenter">
+    <div class="card-body">
+      <h6 class="card-title">#{{tweets[i].id}} &nbsp; @{{tweets[i].user.name}}<span
+          class="float-right">{{tweets[i].created_at | date: 'dd/MM/yyyy hh:mm:ss'}}</span> </h6>
+      <p class="card-text">@{{tweets[i].user.screen_name}}</p>
+      <p class="card-text">{{tweets[i].user.followers_count}} &nbsp; Followers</p>
+    </div>
+  </div>
+
+
+
+  <!-- Modal -->
+  <div class="modal fade" id="exampleModalCenter" tabindex="-1" role="dialog" aria-labelledby="exampleModalCenterTitle"
+    aria-hidden="true">
+    <div class="modal-dialog modal-dialog-centered" role="document">
+      <div class="modal-content">
+        <div class="modal-header">
+          <h5 class="modal-title" id="exampleModalLongTitle">@{{tweet?.user.name}}</h5>
+          <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+            <span aria-hidden="true">&times;</span>
+          </button>
+        </div>
+        <div class="modal-body">
+          {{tweet | json}}
+        </div>
+        <div class="modal-footer">
+          <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+          <!-- <button type="button" class="btn btn-primary">Save changes</button> -->
+        </div>
+      </div>
+    </div>
+  </div>
+</div>

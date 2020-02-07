@@ -1,4 +1,4 @@
-export interface User{
+export interface User {
     kind: string;
     localId: string;
     email: string;
@@ -7,8 +7,7 @@ export interface User{
     registered: boolean;
     refreshToken: string;
     expiresIn: string;
-  
+
 }
-    
-    
-   
+
+

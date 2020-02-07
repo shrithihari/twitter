@@ -8,61 +8,16 @@ import { AuthGuard } from './core/guards/auth.guard';
 const routes: Routes = [
   {
     path: '',
-    component: TweetLayoutComponent,
-    // children: [
-    //   {
-    //     path: 'analysis',
-    //     loadChildren: './analysis/analysis.module#AnalysisModule',
-    //   },
-    //   {
-    //     path: 'termsandconditions',
-    //     loadChildren: './termsandconditions/termsandconditions.module#TermsAndConditionsModule'
-    //   },
-    //   {
-    //     path: 'privacypolicy',
-    //     loadChildren: './privacypolicy/privacypolicy.module#PrivacyPolicyModule',
-    //   },
-    //   {
-    //     path: 'support',
-    //     loadChildren:
-    //       './support/support.module#SupportModule'
-    //   },
-    //   {
-    //     path: 'settings',
-    //     loadChildren:
-    //       './settings/settings.module#SettingsModule'
-    //   },
-    //   {
-    //     path: 'account',
-    //     loadChildren:
-    //       './account/account.module#AccountModule'
-    //   },
-    //   {
-    //     path: '',
-    //     loadChildren: './dashboard/dashboard.module#DashboardModule',
-    //   },
-    // ],
+    loadChildren:
+      './authentication/auth.module#AuthenticationModule'
+
+  },
+  {
+    path: 'tweets',
+    loadChildren: './home/home.module#HomeModule',
     canActivate: [AuthGuard]
   },
-  {
-    path: '',
-    component: AuthLayoutComponent,
-    children: [
-      {
-        path: 'login',
-        loadChildren:
-          './authentication/auth.module#AuthenticationModule'
-      },
-      // {
-      //   path: 'error',
-      //   loadChildren: './error/error.module#ErrorModule'
-      // },
-    ],
-  },
-  {
-    path: '**',
-    redirectTo: 'error/404'
-  }
+
 ];
 
 @NgModule({
@@ -70,5 +25,5 @@ const routes: Routes = [
   exports: [RouterModule]
 })
 export class AppRoutingModule {
-  
- }
+
+}
